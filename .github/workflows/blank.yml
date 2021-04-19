@@ -1,7 +1,7 @@
 name: pay.fun_CICD
 on:
   push:
-      branches: [ main ]
+      branches: [ master ]
       # pull or push to on CICD
 #      paths-ignore: # 下列文件的变更不触发部署
 #          - README.md
@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: checkout
-        uses: actions/checkout@main # 检出副本 测试代码为mrin
+        uses: actions/checkout@master # 检出副本 测试代码为mrin
       - name: Setup Node.js environment
         uses: actions/setup-node@v2
   npm_issue :
