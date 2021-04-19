@@ -20,5 +20,6 @@ jobs:
     needs: checkout
     steps:
       - name: Install And Build            
-        run: npm install && npm run build 
+        run: cd ./test
+#         npm install && npm run build 
         
