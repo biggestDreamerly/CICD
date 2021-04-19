@@ -12,15 +12,13 @@ jobs:
     steps:
       - name: checkout
         uses: actions/checkout@main # 检出副本 测试代码为mrin
-      - name: Use Node.js  # 使用官方node
-        uses: actions/setup-node@v1
+      - name: Setup Node.js environment
+        uses: actions/setup-node@v2
   npm_issue :
     name: build
     runs-on: ubuntu-latest
     needs: checkout
     steps:
-      - name: npmi # npm i 安装依赖
-        run: npm install
-      - name: Build              # 第三步，打包代码
-        run: npm run build --if-present
+      - name: Install And Build            
+        run: npm install && npm run build 
         
