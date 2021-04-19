@@ -1,24 +1,22 @@
-name: pay.fun_CICD
+name: CI
+
 on:
-  push:
-      branches: [ master ]
-      # pull or push to on CICD
-#      paths-ignore: # 下列文件的变更不触发部署
-#          - README.md
+    pull_request:
+    push:
+        branches:
+            - master
+
 jobs:
-  checkout:
-    name: checkout
-    runs-on: ubuntu-latest
-    steps:
-      - name: checkout
-        uses: actions/checkout@master 
-      - name: Setup Node.js environment
-        uses: actions/setup-node@v2
-  npm_issue :
-    name: build
-    runs-on: ubuntu-latest
-    needs: checkout
-    steps:
-      - name: Install And Build            
-        run: npm install && npm run build 
-        
+    build:
+        runs-on: ubuntu-18.04
+
+        steps:
+            - uses: actions/checkout@master
+            - name: Use Node.js 10.x
+              uses: actions/setup-node@v1
+              with:
+                  version: 10.x
+            - name: Build
+              run: |
+                  npm install
+                  npm run build --if-present
