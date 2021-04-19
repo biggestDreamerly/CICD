@@ -14,10 +14,8 @@ jobs:
     steps:
       - name: checkout
         uses: actions/checkout@mrin # 检出副本 测试代码为mrin
-      - name: Use Node.js ${{ matrix.node-version }}   # 使用官方node
-          uses: actions/setup-node@v1
-          with:
-            node-version: ${{ matrix.node-version }} #规定node.js版本(可不配置)
+      - name: Use Node.js  # 使用官方node
+        uses: actions/setup-node@v1
   npm_issue :
     name: build
     needs: checkout
