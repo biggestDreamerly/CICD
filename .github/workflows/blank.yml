@@ -20,7 +20,7 @@ jobs:
     name: build
     needs: checkout
     steps:
-      - name: npm Install # npm i 安装依赖
+      - name: npmi # npm i 安装依赖
           run: npm install
       - name: Build              # 第三步，打包代码
           run: npm run build --if-present
