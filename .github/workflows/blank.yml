@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: checkout
-        uses: actions/checkout@master # 检出副本 测试代码为mrin
+        uses: actions/checkout@master 
       - name: Setup Node.js environment
         uses: actions/setup-node@v2
   npm_issue :
@@ -20,7 +20,5 @@ jobs:
     needs: checkout
     steps:
       - name: Install And Build            
-        run: cd ./test
-#         npm install && npm run build 
-#         sd
+        run: npm install && npm run build 
         
