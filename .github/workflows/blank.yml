@@ -1,22 +1,28 @@
-name: Hello World
-on: push
+name: pay.fun_CICD
+on:
+  push:
+      branches: [ main ]
+      # pull or push to on CICD
+      pull_request:
+        branches: [ main ]
+#      paths-ignore: # 下列文件的变更不触发部署
+#          - README.md
 jobs:
-  my_first_job:
-    name: My first job
+  checkout:
+    name: checkout
     runs-on: ubuntu-latest
     steps:
       - name: checkout
-        uses: actions/checkout@master
-      - name: Run a single-line script
-        run: echo "Hello World!"
-  my_second_job:
-    name: My second job
-    runs-on: macos-latest
+        uses: actions/checkout@mrin # 检出副本 测试代码为mrin
+      - name: Use Node.js ${{ matrix.node-version }}   # 使用官方node
+          uses: actions/setup-node@v1
+          with:
+            node-version: ${{ matrix.node-version }} #规定node.js版本(可不配置)
+  npm_issue :
+    name: build
+    needs: checkout
     steps:
-      - name: Run a multi-line script
-        env:
-          MY_VAR: Hello World!
-          MY_NAME: P3TERX
-        run: |
-          echo $MY_VAR
-          echo My name is $MY_NAME
+      - name: npm Install # npm i 安装依赖
+          run: npm install
+      - name: Build              # 第三步，打包代码
+          run: npm run build --if-present
