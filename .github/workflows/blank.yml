@@ -25,6 +25,7 @@ jobs:
               run: | 
                    git config --local user.email "1072566651@qq.com"
                    git config --local user.name "lxyxiaobenzhu"
-                   npm version patch &&  npm publish
+                   npm version patch
+                   npm publish
               env:
                NODE_AUTH_TOKEN: ${{secrets.NPM_AUTH_TOKEN}}
