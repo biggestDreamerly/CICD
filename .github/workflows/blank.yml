@@ -25,6 +25,7 @@ jobs:
               run: | 
                    git config --local user.email "1072566651@qq.com"
                    git config --local user.name "lxyxiaobenzhu"
+                   npx standard-version
                    npm version patch
                    npm publish
               env:
