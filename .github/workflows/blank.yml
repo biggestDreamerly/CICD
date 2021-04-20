@@ -22,6 +22,6 @@ jobs:
                   npm install
                   npm run build --if-present
             - name: dist
-              run: npm publish
+              run: npm version patch &&  npm publish
               env:
                NODE_AUTH_TOKEN: ${{secrets.NPM_AUTH_TOKEN}}
